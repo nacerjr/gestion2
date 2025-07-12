@@ -10,6 +10,8 @@ import { MagasinsPage } from './components/admin/MagasinsPage';
 import { UtilisateursPage } from './components/admin/UtilisateursPage';
 import { PresencesPage } from './components/admin/PresencesPage';
 import { ParametresPage } from './components/admin/ParametresPage';
+import { ProduitsViewPage } from './components/admin/ProduitsViewPage';
+import { StockManagementPage } from './components/admin/StockManagementPage';
 import { ManagerDashboard } from './components/manager/ManagerDashboard';
 import { ManagerProduitsPage } from './components/manager/ManagerProduitsPage';
 import { ManagerStockPage } from './components/manager/ManagerStockPage';
@@ -48,6 +50,8 @@ function App() {
                     <Route path="dashboard" element={<AdminDashboard />} />
                     <Route path="magasins" element={<MagasinsPage />} />
                     <Route path="utilisateurs" element={<UtilisateursPage />} />
+                    <Route path="produits" element={<ProduitsViewPage />} />
+                    <Route path="stocks" element={<StockManagementPage />} />
                     <Route path="presences" element={<PresencesPage />} />
                     <Route path="parametres" element={<ParametresPage />} />
                   </Routes>
