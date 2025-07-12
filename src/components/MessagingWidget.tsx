@@ -66,8 +66,14 @@ export const MessagingWidget: React.FC = () => {
 
       if (user?.role === 'admin') {
         setUsers(filteredUsers.filter((u: any) => u.role === 'employe'));
+      } else if (user?.role === 'manager') {
+        // Manager peut parler seulement avec ses employés
+        setUsers(filteredUsers.filter((u: any) => u.role === 'employe' && u.magasin_id === user.magasin_id));
       } else {
-        setUsers(filteredUsers.filter((u: any) => u.role === 'admin'));
+        // Employé peut parler avec admin et manager de son magasin
+        setUsers(filteredUsers.filter((u: any) => 
+          u.role === 'admin' || (u.role === 'manager' && u.magasin_id === user.magasin_id)
+        ));
       }
     } catch (error) {
       console.error('Erreur lors du chargement des utilisateurs:', error);
@@ -269,7 +275,9 @@ export const MessagingWidget: React.FC = () => {
                     }) : (
                       <div className="text-center text-gray-500 text-sm p-4">
                         Aucun utilisateur disponible
-                      </div>
+                      {user.role === 'admin' ? 'Employés' : 
+                       user.role === 'manager' ? 'Mes Employés' : 
+                       'Administration'}
                     )}
                   </div>
                 </div>
